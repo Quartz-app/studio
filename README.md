@@ -4,4 +4,4 @@
 
 ## Tech stack 
 
-![Tech stack](https://skillicons.dev/icons?i=nextjs,ts,docker,cloudflare,postgres,prisma,mongodb,sentry,md,tailwind)
+![Tech stack](https://skillicons.dev/icons?i=nextjs,ts,docker,redis,cloudflare,postgres,prisma,mongodb,sentry,md,tailwind)
