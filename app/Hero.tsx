@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Circle } from "lucide-react";
-// react hooks not needed here
 import { cn } from "@/lib/utils";
-
 
 function ElegantShape({
     className,
@@ -83,15 +81,11 @@ function HeroGeometric({
 }) {
     const fadeUpVariants = {
         hidden: { opacity: 0, y: 30 },
-        visible: (i: number) => ({
+        visible: {
             opacity: 1,
             y: 0,
-            transition: {
-                duration: 1,
-                delay: 0.5 + i * 0.2,
-                ease: [0.25, 0.4, 0.25, 1],
-            },
-        }),
+            transition: { duration: 1 }
+        }
     };
 
     return (
@@ -147,15 +141,16 @@ function HeroGeometric({
 
             <div className="relative z-10 container mx-auto px-4 md:px-6">
                 <div className="max-w-3xl mx-auto text-center">
+
+                    {/* 1st fade-up */}
                     <motion.div
-                        custom={0}
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
+                        transition={{ delay: 0.5 }}
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
                     >
                         <span className="relative inline-flex items-center justify-center w-7 h-7">
-                            {/* extra-strong multi-layer glow */}
                             <motion.span
                                 aria-hidden
                                 className="absolute inline-block w-12 h-12 rounded-full bg-green-400/25 blur-3xl"
@@ -172,7 +167,6 @@ function HeroGeometric({
                                 transition={{ duration: 1.1, repeat: Infinity, ease: "easeOut" }}
                             />
 
-                            {/* blinking ring - short pulse with small gap between blinks */}
                             <motion.span
                                 aria-hidden
                                 className="absolute inline-block w-8 h-8 rounded-full"
@@ -181,7 +175,6 @@ function HeroGeometric({
                                 transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut", repeatDelay: 1.1 }}
                             />
 
-                            {/* small inner ring to add sparkle */}
                             <motion.span
                                 aria-hidden
                                 className="absolute inline-block w-5 h-5 rounded-full bg-green-500/60 blur-sm"
@@ -190,7 +183,6 @@ function HeroGeometric({
                                 transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut" }}
                             />
 
-                            {/* the icon itself has a subtle blink/scale to accentuate the effect */}
                             <motion.span
                                 className="relative z-10 flex items-center justify-center w-3 h-3"
                                 initial={{ scale: 1 }}
@@ -206,32 +198,30 @@ function HeroGeometric({
                         </span>
                     </motion.div>
 
+                    {/* 2nd fade-up */}
                     <motion.div
-                        custom={1}
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
+                        transition={{ delay: 0.7 }}
                     >
                         <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight">
                             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                                 {title1}
                             </span>
                             <br />
-                            <span
-                                className={cn(
-                                    "bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300 "
-                                )}
-                            >
+                            <span className={cn("bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300 ")}>
                                 {title2}
                             </span>
                         </h1>
                     </motion.div>
 
+                    {/* 3rd fade-up */}
                     <motion.div
-                        custom={2}
                         variants={fadeUpVariants}
                         initial="hidden"
                         animate="visible"
+                        transition={{ delay: 0.9 }}
                     >
                         <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
                             Quartz is the developer-first second brain
@@ -246,4 +236,3 @@ function HeroGeometric({
 }
 
 export { HeroGeometric };
-
